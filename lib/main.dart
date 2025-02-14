@@ -19,8 +19,7 @@ class Task2Creativa extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           title: 'task2_creativa',
-          // locale: DevicePreview.locale(context),
-          // builder: DevicePreview.appBuilder,
+      
           debugShowCheckedModeBanner: false,
            darkTheme: ThemeData.dark(),
           themeMode: ThemeMode.dark,
