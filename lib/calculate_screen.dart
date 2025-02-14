@@ -6,6 +6,7 @@ import 'widgets/custom_operation_button.dart';
 
 class CalculateScreen extends StatefulWidget {
   const CalculateScreen({super.key});
+
   @override
   State<CalculateScreen> createState() => _CalculateScreenState();
 }
@@ -36,32 +37,40 @@ class _CalculateScreenState extends State<CalculateScreen> {
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              InputSection(num1Controller: num1Controller, num2Controller: num2Controller),
-              SizedBox(height: 40.h),
-              ResultSection(result: result),
-              SizedBox(height: 50.h),
-              _buildOperationButtons(),
-            ],
-          ),
+        body: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: InputSection(
+                num1Controller: num1Controller,
+                num2Controller: num2Controller,
+              ),
+            ),
+            SliverToBoxAdapter(child: SizedBox(height: 40.h)),
+            SliverToBoxAdapter(child: ResultSection(result: result)),
+            SliverToBoxAdapter(child: SizedBox(height: 50.h)),
+            SliverToBoxAdapter(child: _buildOperationButtons()),
+          ],
         ),
       ),
     );
   }
+
   Widget _buildOperationButtons() {
     return Container(
       height: 350.h,
       width: double.infinity,
       decoration: BoxDecoration(
-        color:const  Color(0xff007C6A),
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(40.r), topRight:const  Radius.circular(40)),
+        color: const Color(0xff007C6A),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(40.r),
+          topRight: const Radius.circular(40),
+        ),
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 100.h, horizontal: 25.w),
@@ -75,7 +84,6 @@ class _CalculateScreenState extends State<CalculateScreen> {
           ],
         ),
       ),
-      
     );
   }
 }
