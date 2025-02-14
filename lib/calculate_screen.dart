@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:task2_creativa/widgets/input_section.dart';
+import 'widgets/build_section.dart';
 import 'widgets/custom_operation_button.dart';
 
 class CalculateScreen extends StatefulWidget {
   const CalculateScreen({super.key});
-
   @override
   State<CalculateScreen> createState() => _CalculateScreenState();
 }
@@ -36,47 +36,32 @@ class _CalculateScreenState extends State<CalculateScreen> {
       }
     });
   }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            InputSection(num1Controller: num1Controller, num2Controller: num2Controller),
-            SizedBox(height: 40.h),
-            _buildResultSection(),
-            SizedBox(height: 50.h),
-            _buildOperationButtons(),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              InputSection(num1Controller: num1Controller, num2Controller: num2Controller),
+              SizedBox(height: 40.h),
+              ResultSection(result: result),
+              SizedBox(height: 50.h),
+              _buildOperationButtons(),
+            ],
+          ),
         ),
       ),
     );
   }
-
-  Widget _buildResultSection() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        _buildColoredBox(),
-        Text('Result = $result', style: TextStyle(fontSize: 20.sp, color: Colors.black)),
-        _buildColoredBox(),
-      ],
-    );
-  }
-
-  Widget _buildColoredBox() {
-    return Container(height: 20.h, width: 30.w, decoration: const BoxDecoration(color: Color(0xff007C6A)));
-  }
-
   Widget _buildOperationButtons() {
     return Container(
-      height: 400.h,
+      height: 350.h,
       width: double.infinity,
-      decoration: const BoxDecoration(
-        color: Color(0xff007C6A),
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
+      decoration: BoxDecoration(
+        color:const  Color(0xff007C6A),
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(40.r), topRight:const  Radius.circular(40)),
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 100.h, horizontal: 25.w),
@@ -90,7 +75,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
           ],
         ),
       ),
+      
     );
   }
 }
-

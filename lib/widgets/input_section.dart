@@ -15,7 +15,7 @@ class InputSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 400.h,
+      height: 350.h,
       width: double.infinity,
       decoration: BoxDecoration(
         color: const Color(0xff007C6A),

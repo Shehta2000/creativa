@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomOperationButton extends StatelessWidget {
   final dynamic icon;
-   // يمكن أن يكون IconData أو String
+   //* Accept any type of data.
   final VoidCallback onPressed;
 
   const CustomOperationButton({
